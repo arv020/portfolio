@@ -46,19 +46,14 @@ for (let p of pages) {
 const navLinks = nav.querySelectorAll('a');
 
 navLinks.forEach(link => {
-  const linkPath = link.pathname.replace(/index\.html$/, '');
-  const currentPath = location.pathname.replace(/index\.html$/, '');
-
-  if (link.host === location.host && linkPath === currentPath) {
+  if (link.host === location.host && link.pathname === location.pathname) {
     link.classList.add('current');
   }
-
-  if (link.host !== location.host) {
+if (link.host !== location.host) {
     link.target = "_blank";
-    link.rel = "noopener noreferrer";
+    link.rel = "noopener noreferrer"; // good practice for security
   }
 });
-
 document.body.insertAdjacentHTML(
   'afterbegin',
   `
