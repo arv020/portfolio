@@ -152,6 +152,7 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
   // Clear existing content
   containerElement.innerHTML = '';
 
+  // Validate inputs
   if (!Array.isArray(projects)) {
     console.error('renderProjects: Expected an array of projects');
     return;
@@ -162,30 +163,32 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
     return;
   }
 
-  // Sort projects by year (latest first)
-  const sortedProjects = projects.slice().sort((a, b) => b.year - a.year);
+  // Absolute path prefix for images (works on any page)
+  // Replace `portfolio` with your repo name on GitHub Pages
+  const prefix = window.location.hostname.includes('github.io') 
+    ? '/portfolio/' 
+    : '/';
 
   // Create article for each project
-  sortedProjects.forEach((project) => {
+  projects.forEach((project) => {
     const article = document.createElement('article');
-
-    // Use root-relative path directly
-    const imagePath = project.image;
-
     article.innerHTML = `
       <${headingLevel}>${project.title}</${headingLevel}>
       <p>Year: ${project.year}</p>
-      <img src="${imagePath}" alt="${project.title}">
+
+      <img src="${prefix}${project.image}" alt="${project.title}">
       <p>${project.description}</p>
     `;
-
     containerElement.appendChild(article);
   });
 
+  // Handle empty projects
   if (projects.length === 0) {
     containerElement.innerHTML = '<p>No projects found.</p>';
   }
 }
+
+
 
 
 
