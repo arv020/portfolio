@@ -116,3 +116,89 @@ form?.addEventListener('submit', function(event) {
 });
 
 
+export async function fetchJSON(url) {
+  try {
+    // Fetch the JSON file from the given URL
+    const response = await fetch(url);
+
+    if (!response.ok) {
+    throw new Error(`Failed to fetch projects: ${response.statusText}`);
+   }
+  const data = await response.json();
+  return data;
+
+  console.log(response)
+  } catch (error) {
+    console.error('Error fetching or parsing JSON data:', error);
+  }
+}
+
+// export function renderProjects(project, containerElement, headingLevel = 'h2') {
+//   // write javascript that will allow dynamic heading levels based on previous function
+
+//   containerElement.innerHTML = '';
+//   //create new article element
+//   const article = document.createElement('article');
+
+//   article.innerHTML = `
+//     <h3>${project.title}</h3>
+//     <img src="${project.image}" alt="${project.title}">
+//     <p>${project.description}</p>
+// `;
+//   containerElement.appendChild(article);
+// }
+
+
+export function renderProjects(projects, containerElement, headingLevel = 'h2') {
+  // Clear existing content
+  containerElement.innerHTML = '';
+
+  // Validate inputs
+  if (!Array.isArray(projects)) {
+    console.error('renderProjects: Expected an array of projects');
+    return;
+  }
+
+  if (!containerElement) {
+    console.error('renderProjects: Invalid container element');
+    return;
+  }
+
+  // Create article for each project
+  projects.forEach((project) => {
+    const article = document.createElement('article');
+    article.innerHTML = `
+      <${headingLevel}>${project.title}</${headingLevel}>
+      <p>Year: ${project.year}</p>
+
+      <img src="${project.image}" alt="${project.title}">
+      <p>${project.description}</p>
+    `;
+    containerElement.appendChild(article);
+  });
+
+  // Handle empty projects
+  if (projects.length === 0) {
+    containerElement.innerHTML = '<p>No projects found.</p>';
+  }
+}
+
+
+// export async function fetchGitHubData(username) {
+//   // return statement here
+//   return fetchJSON(`https://api.github.com/users/${username}`);
+
+// }
+
+export async function fetchGitHubData(username) {
+  return fetchJSON(`https://api.github.com/users/${username}`);
+
+  // try {
+  //   const response = await fetch(`https://api.github.com/users/${username}`);
+  //   if (!response.ok) throw new Error(`GitHub fetch failed: ${response.status}`);
+  //   return await response.json();
+  // } catch (err) {
+  //   console.error('Error in fetchGitHubData:', err);
+  //   return null;
+  // }
+}
