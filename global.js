@@ -151,23 +151,16 @@ export async function fetchJSON(url) {
 export function renderProjects(projects, containerElement, headingLevel = 'h2') {
   containerElement.innerHTML = '';
 
-  if (!Array.isArray(projects)) {
-    console.error('renderProjects: Expected an array of projects');
-    return;
-  }
+  if (!Array.isArray(projects) || !containerElement) return;
 
-  if (!containerElement) {
-    console.error('renderProjects: Invalid container element');
-    return;
-  }
-
-  // Detect if running on GitHub Pages
-  const isGitHubPages = window.location.hostname.includes('github.io');
-  const basePath = isGitHubPages ? '/portfolio/' : '/';
+  // Base path for images
+  const basePath = window.location.hostname.includes('github.io') ? '/portfolio/' : '';
 
   projects.forEach((project) => {
     const article = document.createElement('article');
-    const imagePath = `${basePath}${project.image.replace(/^\/+/, '')}`;
+
+    // Remove leading slashes in JSON paths, then prepend basePath
+    const imagePath = basePath + project.image.replace(/^\/+/, '');
 
     article.innerHTML = `
       <${headingLevel}>${project.title}</${headingLevel}>
@@ -175,6 +168,7 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
       <img src="${imagePath}" alt="${project.title}">
       <p>${project.description}</p>
     `;
+
     containerElement.appendChild(article);
   });
 
@@ -182,6 +176,7 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
     containerElement.innerHTML = '<p>No projects found.</p>';
   }
 }
+
 
 
 
