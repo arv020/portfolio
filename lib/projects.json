@@ -2,73 +2,73 @@
   {
     "title": "Wearable Stress and Affect Detection Analysis Project",
     "year": "2025",
-    "image": "https://arv020.github.io/my-portfolio/images/ucsd-logo.jpg",
+    "image": "images/ucsd-logo.jpg",
     "description": "Built a classifier large-scale sensor data model to detect emotional state."
   },
   {
     "title": "Templatize Data Pipeline",
     "year": "2025",
-    "image": "https://arv020.github.io/my-portfolio/images/sdge-logo.jpg",
+    "image": "images/sdge-logo.jpg",
     "description": "Helped engineer a template for a data pipeline using AWS technologies to bring in analytics for a variety of projects."
   },
   {
     "title": "Netflix Recommendation System",
     "year": "2024",
-    "image": "https://arv020.github.io/my-portfolio/images/ucsd-logo.jpg",
+    "image": "images/ucsd-logo.jpg",
     "description": "Built a recommendation system to recommend films based off of a large dataset and viewer activity."
   },
   {
     "title": "Vegetation Management Pipeline",
     "year": "2024",
-    "image": "https://arv020.github.io/my-portfolio/images/sdge-logo.jpg",
+    "image": "images/sdge-logo.jpg",
     "description": "Helped engineer a data pipeline using AWS technologies to bring in analytics for the Vegetation Management Project."
   },
   {
     "title": "HR Job Requisition Dashboard",
     "year": "2023",
-    "image": "https://arv020.github.io/my-portfolio/images/sdge-logo.jpg",
-    "description": "Built a Power BI dashboard to keep track of job requisitions in the pipeline of approvals to streamline and improve progress tracking."
+    "image": "images/sdge-logo.jpg",
+    "description": "Built a Power BI dashboard to track job requisitions in the pipeline of approvals to streamline and improve progress tracking."
   },
   {
     "title": "Field Service Delivery Pipeline",
     "year": "2023",
-    "image": "https://arv020.github.io/my-portfolio/images/sdge-logo.jpg",
+    "image": "images/sdge-logo.jpg",
     "description": "Helped engineer a data pipeline using AWS technologies to bring in analytics for the Field Service Delivery Project."
   },
   {
     "title": "Wildfire Risk Analysis",
     "year": "2022",
-    "image": "https://arv020.github.io/my-portfolio/images/sdge-logo.jpg",
+    "image": "images/sdge-logo.jpg",
     "description": "Built a variety of machine learning models to identify assets that are higher risk of wildfire within the San Diego service territory."
   },
   {
     "title": "IT Employee Dashboard Skills",
     "year": "2021",
-    "image": "https://arv020.github.io/my-portfolio/images/sdge-logo.jpg",
+    "image": "images/sdge-logo.jpg",
     "description": "Built a Power BI dashboard to identify skills training for over 400 IT employees."
   },
   {
     "title": "IT Employee Training Automation",
     "year": "2021",
-    "image": "https://arv020.github.io/my-portfolio/images/sdge-logo.jpg",
+    "image": "images/sdge-logo.jpg",
     "description": "Created an automation using Power Automate to streamline employee responses to training activity during the year."
   },
   {
     "title": "Viasat VPN Streaming Classifier Capstone Project",
     "year": "2021",
-    "image": "https://arv020.github.io/my-portfolio/images/viasat-logo.jpg",
+    "image": "images/viasat-logo.jpg",
     "description": "Built ML models to classify VPN user streaming behavior using network data such as IPs and packet sizes."
   },
   {
     "title": "TRELS First Generation Barriers",
     "year": "2020",
-    "image": "https://arv020.github.io/my-portfolio/images/ucsd-logo.jpg",
+    "image": "images/ucsd-logo.jpg",
     "description": "Built a range of machine learning models to identify barriers that keep first-generation students from going to college."
   },
   {
     "title": "Diversity in Data Science New Organization",
     "year": "2020",
-    "image": "https://arv020.github.io/my-portfolio/images/ucsd-logo.jpg",
+    "image": "images/ucsd-logo.jpg",
     "description": "Created a new organization for UCSD students to promote diversity in data science."
   }
 ]

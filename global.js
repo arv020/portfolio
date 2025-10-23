@@ -164,14 +164,36 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
     return;
   }
 
+  // --- Helper to make sure image paths work on GitHub Pages ---
+  const pathname = window.location.pathname; // e.g. "/my-portfolio/" or "/"
+  let base = window.location.origin; // e.g. https://yourusername.github.io
+
+  // If your site is hosted under a repo (like /my-portfolio/), include it
+  if (base.includes('github.io')) {
+    const parts = pathname.split('/').filter(Boolean);
+    if (parts.length > 0) {
+      base += '/' + parts[0];
+    }
+  }
+
+  const resolveImage = (imgPath) => {
+    if (/^(https?:)?\/\//i.test(imgPath)) return imgPath; // already absolute
+    const rel = imgPath.replace(/^\/+/, ''); // remove leading slash
+    return `${base}/${rel}`; // make it absolute
+  };
+
+  // Sort by year (latest first)
+  projects.sort((a, b) => Number(b.year) - Number(a.year));
+
   // Create article for each project
   projects.forEach((project) => {
+    const imageSrc = resolveImage(project.image);
+
     const article = document.createElement('article');
     article.innerHTML = `
       <${headingLevel}>${project.title}</${headingLevel}>
-      <p>Year: ${project.year}</p>
-
-      <img src="${project.image}" alt="${project.title}">
+      <p><strong>Year:</strong> ${project.year}</p>
+      <img src="${imageSrc}" alt="${project.title}" loading="lazy">
       <p>${project.description}</p>
     `;
     containerElement.appendChild(article);
