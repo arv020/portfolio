@@ -149,18 +149,28 @@ export async function fetchJSON(url) {
 // }
 
 export function renderProjects(projects, containerElement, headingLevel = 'h2') {
+  // Clear existing content
   containerElement.innerHTML = '';
 
-  if (!Array.isArray(projects) || !containerElement) return;
+  if (!Array.isArray(projects)) {
+    console.error('renderProjects: Expected an array of projects');
+    return;
+  }
 
-  // Base path for images
-  const basePath = window.location.hostname.includes('github.io') ? '/portfolio/' : '';
+  if (!containerElement) {
+    console.error('renderProjects: Invalid container element');
+    return;
+  }
 
-  projects.forEach((project) => {
+  // Sort projects by year (latest first)
+  const sortedProjects = projects.slice().sort((a, b) => b.year - a.year);
+
+  // Create article for each project
+  sortedProjects.forEach((project) => {
     const article = document.createElement('article');
 
-    // Remove leading slashes in JSON paths, then prepend basePath
-    const imagePath = basePath + project.image.replace(/^\/+/, '');
+    // Use root-relative path directly
+    const imagePath = project.image;
 
     article.innerHTML = `
       <${headingLevel}>${project.title}</${headingLevel}>
@@ -176,6 +186,8 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
     containerElement.innerHTML = '<p>No projects found.</p>';
   }
 }
+
+
 
 
 
