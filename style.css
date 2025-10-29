@@ -346,5 +346,76 @@ nav a:hover {
   color: #333;
 }
 
+.project-details {
+  font-family: Baskerville, serif;
+  font-variant-numeric: oldstyle-nums;
+  margin-top: 0.5em;
+}
+
+.project-year {
+  font-style: italic;
+  color: #555;
+  margin-top: 0.25em;
+}
+
+#projects-plot {
+  max-width: 20em;
+  margin-block: 2em;
+
+  overflow: visible;
+}
+
+.legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+  gap: 0.5em;          /* space between items */
+  padding: 1em;        /* space inside the border */
+  margin: 1em 0;       /* space around the legend */
+  border: 1px solid #ccc; /* light border around the legend */
+  border-radius: 0.5em;   /* optional rounded corners */
+  list-style: none;    /* remove default bullets */
+}
+
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;          /* space between swatch and text */
+}
+
+.legend .swatch {
+  width: 20px;
+  aspect-ratio: 1 / 1;  /* keeps it square */
+  background-color: var(--color);
+  border-radius: 50%;   /* makes it a circle */
+  display: inline-block;
+}
+
+.container {
+  display: flex;
+  align-items: flex-start;
+  gap: 1em;
+}
+
+.container .legend {
+  flex: 1;
+}
 
 
+&:has(path:hover) {
+  path:not(:hover) {
+    opacity: 0.5;
+  }
+}
+
+path {
+  transition: 300ms;
+  cursor: pointer;
+}
+
+.selected {
+  --color: oklch(60% 45% 0) !important;
+
+  &:is(path) {
+    fill: var(--color);
+  }
+}
